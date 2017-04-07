@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'fantaisie';
+    src: url('font/Meatloaf.ttf');
+}
+
 .Derniersreleves{
   margin: 100px;
 
@@ -19,4 +24,13 @@ section {
 
 .interieur{
     padding: 35px;
+}
+
+.données{
+    font-family: fantaisie;
+    font-size: 80px;
+}
+
+.date{
+    font-size: 20px;
 }
