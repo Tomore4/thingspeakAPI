@@ -125,7 +125,7 @@ app.post('/valeur', function(req, res) {
 });
 
 app.get('/valeur', function(req, res) {
-
+  var date = req.params.date;
   var firstResult;
   ////requête//////
   var selectQuery = 'SELECT * FROM post WHERE id =(SELECT max(id) FROM post)';
@@ -151,11 +151,146 @@ app.get('/valeur', function(req, res) {
    );
 });
 
-app.get('/date/:date_debut/:date_fin', function(req, res) {
+app.get('/valeur/temperature/:nb', function(req, res) {
+  var nb = req.params.nb;
+  ////requête//////
+  var selectQuery = 'SELECT temperature FROM ( SELECT * FROM post ORDER BY id DESC LIMIT '+nb+' ) x ORDER BY id ASC' ;
+  connection.query(
+    selectQuery,
+    function select(error, results, fields) {
+      if (error) {
+        console.log(error);
+        connection.end();
+        return;
+      }
+      if ( results.length > 0 )  {
+         res.jsonp({results});
+         console.log("succes get");
+       } else {
+         res.jsonp({message:"Pas de données"});
+         console.log("Pas de données");
+       }
+     }
+   );
+});
 
+app.get('/valeur/humidite/:nb', function(req, res) {
+  var nb = req.params.nb;
+  ////requête//////
+  var selectQuery = 'SELECT humidite FROM ( SELECT * FROM post ORDER BY id DESC LIMIT '+nb+' ) x ORDER BY id ASC' ;
+  connection.query(
+    selectQuery,
+    function select(error, results, fields) {
+      if (error) {
+        console.log(error);
+        connection.end();
+        return;
+      }
+      if ( results.length > 0 )  {
+         res.jsonp({results});
+         console.log("succes get");
+       } else {
+         res.jsonp({message:"Pas de données"});
+         console.log("Pas de données");
+       }
+     }
+   );
+});
+
+app.get('/valeurs/:nb', function(req, res) {
+  var nb = req.params.nb;
+  ////requête//////
+  var selectQuery = 'SELECT humidite,temperature FROM ( SELECT * FROM post ORDER BY id DESC LIMIT '+nb+' ) x ORDER BY id ASC' ;
+  connection.query(
+    selectQuery,
+    function select(error, results, fields) {
+      if (error) {
+        console.log(error);
+        connection.end();
+        return;
+      }
+      if ( results.length > 0 )  {
+        var temp=[];
+        var humi=[];
+        for(var i=0;i<results.length;i++){
+          temp.push(results[i]['temperature']);
+          humi.push(results[i]['humidite']);
+        }
+        res.jsonp({temperature : temp, humidite : humi});
+        console.log("succes get");
+      } else {
+        console.log("Pas de données");
+      }
+     }
+   );
+});
+
+// app.get('/date/:date', function(req, res) {
+//   var date = req.params.date;
+//   console.log(req.params.date);
+//   var firstResult;
+//   ////requête//////
+//   var selectQuery = "SELECT * FROM post WHERE date = "+date ;
+//   connection.query(
+//     selectQuery,
+//     function select(error, results, fields) {
+//       if (error) {
+//         console.log(error);
+//         connection.end();
+//         return;
+//       }
+//       if ( results.length > 0 )  {
+//         //firstResult = results[ 0 ];
+//          //console.log('humidite: ' + firstResult['humidite']);
+//          //console.log('temperature: ' + firstResult['temperature']);
+//          var temp=[];
+//          var humi=[];
+//          for(var i=0;i<results.length;i++){
+//            temp.push(results[i]['temperature']);
+//            humi.push(results[i]['humidite']);
+//          }
+//          res.jsonp({temperature : temp, humidite : humi});
+//          console.log("succes get");
+//        } else {
+//          console.log("Pas de données");
+//        }
+//      }
+//    );
+// });
+
+app.get('/date/:date_debut/:date_fin', function(req, res) {
+  var debut = req.params.date_debut;
+  var fin = req.params.date_fin;
   console.log(req.params.date_debut);
   console.log(req.params.date_fin);
-
+  var firstResult;
+  ////requête//////
+  var selectQuery = "SELECT * FROM post WHERE date BETWEEN '"+debut+"' AND '"+fin+"' " ;
+  connection.query(
+    selectQuery,
+    function select(error, results, fields) {
+      if (error) {
+        console.log(error);
+        connection.end();
+        return;
+      }
+      if ( results.length > 0 )  {
+        //firstResult = results[ 0 ];
+         //console.log('humidite: ' + firstResult['humidite']);
+         //console.log('temperature: ' + firstResult['temperature']);
+         var temp=[];
+         var humi=[];
+         for(var i=0;i<results.length;i++){
+           temp.push(results[i]['temperature']);
+           humi.push(results[i]['humidite']);
+         }
+         res.jsonp({temperature : temp, humidite : humi});
+         console.log("succes get");
+       } else {
+         console.log("Pas de données");
+       }
+     }
+   );
 });
 
 myRouter.route('/')

@@ -103,19 +103,39 @@ var myChart = new Chart(ctx, {
 //   $("#demo").append(temp+"<br>"+humi);
 // });
 
+// $.ajax({
+//     url: "http://164.132.194.235:8080/valeur/humidite",
+//     //method: 'GET',
+//     crossDomain: true,
+//     dataType: 'jsonp'
+//     //beforeSend: setHeader
+// }).done(function(data){
+//   console.log(data);
+//   console.log(data['results'][0][['humidite']]);
+//   var tab="<table><tr><td>Humidité</td>";
+//   for(var i=0;i<10;i++){
+//     tab += "<td>"+data['results'][i][['humidite']]+"</td>";
+//   }
+//   tab +="</tr></table>";
+//   $("#humi").append(tab);
+// });
+
+
+
 $.ajax({
-    url: "http://164.132.194.235:8080/valeur/humidite",
+    url: "http://localhost:8080/date/2017-03-10/2017-03-30",
     //method: 'GET',
     crossDomain: true,
     dataType: 'jsonp'
     //beforeSend: setHeader
 }).done(function(data){
   console.log(data);
-  console.log(data['results'][0][['humidite']]);
+  console.log(data['temperature'].length);
+  console.log(data['temperature'][0]);
   var tab="<table><tr><td>Humidité</td>";
-  for(var i=0;i<10;i++){
-    tab += "<td>"+data['results'][i][['humidite']]+"</td>";
-  }
-  tab +="</tr></table>";
+  // for(var i=0;i<10;i++){
+  //   tab += "<td>"+data['results'][i][['humidite']]+"</td>";
+  // }
+
   $("#humi").append(tab);
 });
