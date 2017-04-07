@@ -2,7 +2,7 @@
 <div class="Derniersreleves">
 
     <div class="row">
-        <p class="col-lg-5 col-md-5 col-sm-5 col-xs-5">Dernier relevé de température et d'humidté</p>
+        <p class="col-lg-5 col-md-5 col-sm-5 col-xs-5">Dernier relevé de température et d'humidté effectué le: </p><div id="dernier"></div>
     </div>
 
     <div class="row">

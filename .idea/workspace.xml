@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="189d0856-1579-48e5-8b41-199b6352aa49" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accueil.php" afterPath="$PROJECT_DIR$/accueil.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -100,8 +98,8 @@
       <file leaf-file-name="accueil.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/accueil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="156" lean-forward="false" selection-start-line="9" selection-start-column="156" selection-end-line="9" selection-end-column="156" />
+            <state relative-caret-position="60">
+              <caret line="4" column="133" lean-forward="false" selection-start-line="4" selection-start-column="133" selection-end-line="4" selection-end-column="133" />
               <folding />
             </state>
           </provider>
@@ -262,12 +260,12 @@
       <updated>1491396059327</updated>
       <workItem from="1491396060759" duration="5688000" />
       <workItem from="1491480782008" duration="1937000" />
-      <workItem from="1491485657254" duration="12415000" />
+      <workItem from="1491485657254" duration="12586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20040000" />
+    <option name="totallyTimeSpent" value="20211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="743" extended-state="0" />
@@ -494,8 +492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/accueil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="156" lean-forward="false" selection-start-line="9" selection-start-column="156" selection-end-line="9" selection-end-column="156" />
+        <state relative-caret-position="60">
+          <caret line="4" column="133" lean-forward="false" selection-start-line="4" selection-start-column="133" selection-end-line="4" selection-end-column="133" />
           <folding />
         </state>
       </provider>
