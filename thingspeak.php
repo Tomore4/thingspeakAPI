@@ -22,8 +22,9 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="<?php echo $_SESSION['list'];?>">
-        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="main.js"></script>
     </head>
 
     <body>
@@ -58,13 +59,13 @@
           </div>
 
 
-
-          <?php
-                // On va charger uniquement l'intérieur de la page en fonction
-                // du lien choisi dans la barre de navigation
-                include ($_SESSION['page']);
-          ?>
-
+          <div class="interieur">
+              <?php
+                    // On va charger uniquement l'intérieur de la page en fonction
+                    // du lien choisi dans la barre de navigation
+                    include ($_SESSION['page']);
+              ?>
+          </div>
 
           <footer>
               <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
