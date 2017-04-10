@@ -5,6 +5,33 @@ jQuery(document).ready(function ($) {
     //    dataType: "json"
     //}).done(function(data) {
 
+    /* Fonction permettant de modifier
+        l'écriture de la date
+        qui s'affiche dans le tableau
+    */
+    function lissage(str){
+        //var index=str.indexOf("T");
+        str=str.replace("T"," à ");  // remplace le T contenu dans le jsonp par un à
+        str=str.replace(":"," h "); // remplace le : contenu dans le jsonp par un h
+        var res=str.substring(0, 20);  // on garde 20 valeurs du tableau en partant de 0 supprime les autres valeurs
+        return res;
+
+    }
+
+    /* Fonction permettant de modifier
+     l'écriture de la date
+     qui sert pour la construction du graphe
+     */
+    function lissage2(str){
+        str=str.replace("T"," ");  // remplace le T contenu dans le jsonp par un à espace
+        var res=str.substring(0, 19);  // on garde 19 valeurs du tableau en partant de 0 supprime les autres valeurs
+        return res;
+
+    }
+
+
+    //Cette fonction permet d'afficher les dernieres valeurs reçues: date+hum+temp
+    // Cela va s'afficher dans accueil.php
     $.ajax({
         url: "http://164.132.194.235:8080/valeur",
         //method: 'GET',
@@ -17,52 +44,170 @@ jQuery(document).ready(function ($) {
         var humi = data['humidite'];
         var date = data['date'];
         date=lissage(date);
-        $("#temp").append(temp+"°C");
-        $("#humi").append(humi+"%");
-        $("#dernier").append(date);
+        $("#temp").append(temp+"°C");  // dans la div dont l'id=temp on ajoute le contenu de la donnée temperature
+        $("#humi").append(humi+"%");  // dans la div dont l'id=humi on ajoute le contenu de la donnée humidite
+        $("#dernier").append(date);  // dans la div dont l'id=dernier on ajoute le contenu de la donnée humidite
     });
 
-    function lissage(str){
-      //var index=str.indexOf("T");
-      str=str.replace("T"," à ");
-      str=str.replace(":"," h ");
-      var res=str.substring(0, 20);
-      return res;
 
-    }
+    //Cette fonction permet d'afficher les 10 dernieres valeurs reçues: date+hum+temp
+    // Cela va s'afficher dans general.php
+    $.ajax({
+        url: "http://164.132.194.235:8080/valeurs/10", // la routte
+        //method: 'GET',
+        crossDomain: true,
+        dataType: 'jsonp'
+    }).done(function(data){
+        //Construction du tableau
+        $('#General').append("<table class='table table-condensed table-hover table-bordered table-striped'></table>");
+        //L'en tete
+        ligne = "<thead><tr>";
+        ligne += "<th>Date</th>";
+        ligne += "<th>Température</th>";
+        ligne += "<th>Humidité</th>";
+        ligne += "</tr></thead>";
 
-        // $('#humidite').append("<table class='table-hover table-bordered table-striped'></table>");
-        // "<caption>Liste des relevés de température</caption>";
-        // ligne = "<thead><tr>";
-        // ligne += "<th class=\"danger\">Temérature</th>";
-        // ligne += "<th class=\"danger\">Humidité</th>";
-        // ligne += "</tr></thead>";
-        // $('#humidite table').append(ligne);
-        // $('#humidite table').append("<tbody>");
-        //
-        // for (i = 0; i < data.length; i++) {
-        //     parrain = data[i];
-        //     ligne = "<tr>";
-        //     ligne += "<td>" + temp + "</td>";
-        //     ligne += "<td>" + humi  + "</td>";
-        //     ligne += "</tr>";
-        //     $('#humidite table').append(ligne);
-        // }
-        //
-        //
-        // $('#humidite table').append("</tbody>");
-        // $('table').tablesorter();
-        //
-        // $('#humidite').append("<hr>");
-        //
-        // for (var key in compteur) {
-        //     var value = compteur[key];
-        //     $('#humidite').append(key + " = " + value + "<br>");
-        // }
+        $('#General table').append(ligne);
+        $('#General table').append("<tbody>");
+
+        //Le corps du tableau
+        // soit les 10 dernières valeurs :
+        for(var i=0;i<10;i++){
+            var date = data['date'][i];
+            var Temp = data['humidite'][i];
+            var Hum = data['temperature'][i];
+            date=lissage(date);
+            ligne = "<tr>";
+            ligne += "<td>"+date+"</td>";
+            ligne += "<td>"+Temp+"</td>";
+            ligne += "<td>"+Hum+"</td>";
+            ligne += "</tr>";
+            $('#General table').append(ligne);
+        }
+        $('#General table').append("</tbody>");
+        $('table').tablesorter();
+
+        // construction des données à passer au graphique
+        var chaine = "";
+        for (var i = 0; i < 10; i++) {
+            var date = data['date'][i];
+            var hum2=data['humidite'][i];
+            var temp2=data['temperature'][i];
+            date=lissage2(date);
+            chaine += date + "," + hum2 + "," + temp2 + "\n";
+        }
+        // Construction du graphique :
+        new Dygraph(dygraph,
+            chaine,
+            {
+                title: 'Température et Humidité',
+                labels: ["Date", "Température (°C)", "Humidité (%)"],
+                labelsDivStyles: {'textAlign': 'right'},
+                labelsDivWidth: 180,
+                labelsSeparateLines: true,
+
+                legend: 'always',
+                ylabel: 'Température(°C) - Humidité(%)',
+                showRoller: false,
+                showRangeSelector: true,
+                height: 400
+            });
+    });
 
 
+    //Cette fonction permet d'afficher les valeurs de temperatures
+    // Cela va s'afficher dans temperature.php
+    $.ajax({
+        url: "http://164.132.194.235:8080/valeur/temperature",
+        //method: 'GET',
+        crossDomain: true,
+        dataType: 'jsonp'
+    }).done(function(data){
+        console.log(data);
+        console.log(data['results'][0][['temperature']]);
+        //Construction du tableau :
+        $('#Temperature').append("<table class='table table-hover table-bordered table-striped'></table>");
+        //L'en tête :
+        ligne = "<thead><tr>";
+        ligne += "<th>Date</th>";
+        ligne += "<th>Température</th>";
+        ligne += "</tr></thead>";
+
+        $('#Temperature table').append(ligne);
+        $('#Temperature table').append("<tbody>");
+
+        //Le corps du tableau :
+        for(var i=0;i<10;i++){
+            var date = data['results'][i][['date']];
+            var Temp = data['results'][i][['temperature']];
+            date=lissage(date);
+            ligne = "<tr>";
+            ligne += "<td>"+date+"</td>";
+            ligne += "<td>"+Temp+"</td>";
+            ligne += "</tr>";
+            $('#Temperature table').append(ligne);
+        }
+        $('#Temperature table').append("</tbody>");
+        $('table').tablesorter();
+    });
 
 
+    //Cette fonction permet d'afficher les valeurs d'humidite
+    // Cela va s'afficher dans humidite.php
+    $.ajax({
+        url: "http://164.132.194.235:8080/valeur/humidite",
+        //method: 'GET',
+        crossDomain: true,
+        dataType: 'jsonp'
+    }).done(function(data){
+        console.log(data);
+        console.log(data['results'][0][['humidite']]);
+        //Construction du tableau:
+        $('#Humidite').append("<table class='table table-condensed table-hover table-bordered table-striped'></table>");
+        //L'en tête:
+        ligne = "<thead><tr>";
+        ligne += "<th>Date</th>";
+        ligne += "<th>Humidite</th>";
+        ligne += "</tr></thead>";
+
+        $('#Humidite table').append(ligne);
+        $('#Humidite table').append("<tbody>");
+        // Le corps du tableau:
+        for(var i=0;i<10;i++){
+            var date = data['results'][i][['date']];
+            var Hum = data['results'][i][['humidite']];
+            date=lissage(date);
+            ligne = "<tr>";
+            ligne += "<td>"+date+"</td>";
+            ligne += "<td>"+Hum+"</td>";
+            ligne += "</tr>";
+            $('#Humidite table').append(ligne);
+        }
+        $('#Humidite table').append("</tbody>");
+        $('table').tablesorter();
+    });
+
+    /*
+
+    //$("#envoi").click(function(){
+        alert("cdddd");
+        var modif = $("input[name=Nvaleurs]").val();
+        alert(modif);
+        var url="http://164.132.194.235:8080/valeur/temperature/"+modif;
+        alert(url);
+        $.ajax({
+            url: url,
+            //method: 'GET',
+            crossDomain: true,
+            dataType: 'jsonp'
+            //beforeSend: setHeader
+
+        }).done(function(data) {
+            console.log("coucoucoucocucocucoucocu"+data);
+            alert("marche?");
+        });
 
     //});
+
+    */
 });

@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: 'fantaisie';
-    src: url('font/Meatloaf.ttf');
+    src: url('../font/Meatloaf.ttf');
 }
 
 body {
@@ -29,7 +29,7 @@ justify-content: center;
 
 }
 
-.navbar-inverse {
+.navbar-inverse, .dropdown, .dropdown-menu, .dropdown-toggle {
     background-image: linear-gradient(to bottom,#cf1a1a 0,#D5F0D1 100%);
     border-color: #FFF;
   }
@@ -45,7 +45,7 @@ justify-content: center;
 }
 
 #boutonmenu{
-	background-image: url("lib/panthere.png");
+	background-image: url("../lib/panthere.png");
     background-size: 65px 20px;
 
 }
@@ -66,4 +66,9 @@ justify-content: center;
 
 .date{
     font-size: 20px;
+}
+
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #2c5fb2;
 }

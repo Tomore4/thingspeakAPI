@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'fantaisie';
-    src: url('font/Meatloaf.ttf');
+    src: url('../font/Meatloaf.ttf');
 }
 
 .Derniersreleves{
@@ -33,4 +33,8 @@ section {
 
 .date{
     font-size: 20px;
+}
+
+.table-hover{
+    background-color: #0055B2;
 }
