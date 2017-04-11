@@ -1,9 +1,4 @@
 jQuery(document).ready(function ($) {
-    //$.ajax({
-    //    methode: "get",
-    //    url: "https://164.132.194.235:8080/valeur/temperature",
-    //    dataType: "json"
-    //}).done(function(data) {
 
     /* Fonction permettant de modifier
         l'écriture de la date
@@ -15,8 +10,8 @@ jQuery(document).ready(function ($) {
         str=str.replace(":"," h "); // remplace le : contenu dans le jsonp par un h
         var res=str.substring(0, 20);  // on garde 20 valeurs du tableau en partant de 0 supprime les autres valeurs
         return res;
-
     }
+
 
     /* Fonction permettant de modifier
      l'écriture de la date
@@ -26,7 +21,6 @@ jQuery(document).ready(function ($) {
         str=str.replace("T"," ");  // remplace le T contenu dans le jsonp par un à espace
         var res=str.substring(0, 19);  // on garde 19 valeurs du tableau en partant de 0 supprime les autres valeurs
         return res;
-
     }
 
 
@@ -51,7 +45,7 @@ jQuery(document).ready(function ($) {
 
 
     //Cette fonction permet d'afficher les 10 dernieres valeurs reçues: date+hum+temp
-    // Cela va s'afficher dans general.php
+    // Cela va s'afficher dans general.php dans la div dont l'id est General
     $.ajax({
         url: "http://164.132.194.235:8080/valeurs/10", // la routte
         //method: 'GET',
@@ -97,7 +91,8 @@ jQuery(document).ready(function ($) {
             chaine += date + "," + hum2 + "," + temp2 + "\n";
         }
         // Construction du graphique :
-        new Dygraph(dygraph,
+        // Cela va s'afficher dans general.php dans la div dont l'id est graphdiv10
+        g = new Dygraph(document.getElementById("graphdiv10"),
             chaine,
             {
                 title: 'Température et Humidité',
@@ -116,7 +111,7 @@ jQuery(document).ready(function ($) {
 
 
     //Cette fonction permet d'afficher les valeurs de temperatures
-    // Cela va s'afficher dans temperature.php
+    // Cela va s'afficher dans Temperature.php dans la div dont l'id est Temperature
     $.ajax({
         url: "http://164.132.194.235:8080/valeur/temperature",
         //method: 'GET',
@@ -137,7 +132,7 @@ jQuery(document).ready(function ($) {
         $('#Temperature table').append("<tbody>");
 
         //Le corps du tableau :
-        for(var i=0;i<10;i++){
+        for(var i=0;i<data['results'].length;i++){
             var date = data['results'][i][['date']];
             var Temp = data['results'][i][['temperature']];
             date=lissage(date);
@@ -149,11 +144,40 @@ jQuery(document).ready(function ($) {
         }
         $('#Temperature table').append("</tbody>");
         $('table').tablesorter();
+
+
+        // construction des données à passer au graphique
+        var chaine = "";
+        for (var i = 0; i < data['results'].length; i++) {
+            var date = data['results'][i][['date']];
+            var temp2= data['results'][i][['temperature']];
+            date=lissage2(date);
+            chaine += date + "," + temp2 + "\n";
+        }
+
+        // Construction du graphique :
+        // Cela va s'afficher dans temperature.php dans la div dont l'id est graphdiv20
+        g2 = new Dygraph(document.getElementById("graphdiv20"),
+            chaine,
+            {
+                title: 'Température',
+                labels: ["Date", "Température (°C)"],
+                labelsDivStyles: {'textAlign': 'right'},
+                labelsDivWidth: 180,
+                labelsSeparateLines: true,
+
+                legend: 'always',
+                ylabel: 'Température(°C)',
+                showRoller: false,
+                showRangeSelector: true,
+                height: 400
+            });
+
     });
 
 
     //Cette fonction permet d'afficher les valeurs d'humidite
-    // Cela va s'afficher dans humidite.php
+    // Cela va s'afficher dans Humidite.php dans la div dont l'id est Humidite
     $.ajax({
         url: "http://164.132.194.235:8080/valeur/humidite",
         //method: 'GET',
@@ -173,7 +197,7 @@ jQuery(document).ready(function ($) {
         $('#Humidite table').append(ligne);
         $('#Humidite table').append("<tbody>");
         // Le corps du tableau:
-        for(var i=0;i<10;i++){
+        for(var i=0;i<data['results'].length;i++){
             var date = data['results'][i][['date']];
             var Hum = data['results'][i][['humidite']];
             date=lissage(date);
@@ -185,6 +209,34 @@ jQuery(document).ready(function ($) {
         }
         $('#Humidite table').append("</tbody>");
         $('table').tablesorter();
+
+        // construction des données à passer au graphique
+        var chaine = "";
+        for (var i = 0; i < data['results'].length; i++) {
+            var date = data['results'][i][['date']];
+            var hum2= data['results'][i][['humidite']];
+            date=lissage2(date);
+            chaine += date + "," + hum2 + "\n";
+        }
+
+        // Construction du graphique :
+        // Cela va s'afficher dans Humidite.php dans la div dont l'id est graphdiv30
+            g3 = new Dygraph(document.getElementById("graphdiv30"),
+            chaine,
+            {
+                title: 'Humidité',
+                labels: ["Date", "Humidité (%)"],
+                labelsDivStyles: {'textAlign': 'right'},
+                labelsDivWidth: 180,
+                labelsSeparateLines: true,
+
+                legend: 'always',
+                ylabel: 'Humidité(%)',
+                showRoller: false,
+                showRangeSelector: true,
+                height: 400
+            });
+
     });
 
     /*

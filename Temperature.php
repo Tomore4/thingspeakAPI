@@ -14,7 +14,7 @@
                         </div>
                         <div class="input-group">
                             <label>Afficher</label>
-                            <input type="number" class="form-control" placeholder="X dernières valeurs" name="Nvaleurs" id="Nvaleurs" value="4">
+                            <input type="number" class="form-control" placeholder="X dernières valeurs" name="Nvaleurs" id="Nvaleurs">
                         </div>
                         <div class="input-group">
                             <label>Afficher les relevés selon période :</label>
@@ -29,4 +29,13 @@
     </div>
 </nav>
 
-<div class="General" id="Temperature"></div>
+<div class="row">
+    <article><h1>Tableau de relevés</h1>
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="Temperature"></div>
+    </article>
+</div>
+<div class="row fin">
+    <article><h1>Graphique de relevés</h1>
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="graphdiv20"></div>
+    </article>
+</div>

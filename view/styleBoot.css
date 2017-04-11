@@ -35,6 +35,25 @@ section {
     font-size: 20px;
 }
 
-.table-hover{
-    background-color: #0055B2;
+
+
+#General,#dygraph{
+    margin: 50px;
+}
+
+#General h1{
+    margin: 20px;
+}
+
+.fin{
+    margin-bottom: 100px;
+}
+
+hr{
+    margin-top: 50px;
+    color: #0055B2;
+}
+
+label{
+    color: white;
 }

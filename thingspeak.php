@@ -47,7 +47,7 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
                                 <li ><a href="thingspeak.php?page=accueil.php">Accueil</a></li>
-                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" >Relevés<span class="caret"></span></a>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Relevés<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="thingspeak.php?page=General.php">Les 10 derniers</a></li>
                                         <li><a href="thingspeak.php?page=Temperature.php">Température</a></li>
@@ -57,6 +57,7 @@
                                 <li><a href="thingspeak.php?page=references.php">References</a></li>
                             </ul>
                             <form method="get" action="thingspeak.php" name="mon formulaire" class="form-inline Formstyle">
+                                <label for="list">Choisissez votre style</label>
                                 <select name="list">
                                     <option value="view/styleDTA.css" <?php if ($_SESSION['list']=="view/styleDTA.css"){ echo "selected";}?>>style dta</option>
                                     <option value="view/styleBoot.css" <?php if ($_SESSION['list']=="view/styleBoot.css"){ echo "selected";}?>>style boot</option>

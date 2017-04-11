@@ -72,3 +72,21 @@ justify-content: center;
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     background-color: #2c5fb2;
 }
+
+
+#General,#dygraph{
+    margin: 50px;
+}
+
+#General h1{
+    margin: 20px;
+}
+
+.fin{
+    margin-bottom: 100px;
+}
+
+hr{
+    margin-top: 50px;
+    border-top: 2px solid #c25555;
+}

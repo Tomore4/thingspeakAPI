@@ -31,8 +31,12 @@
 
 
 <div class="row">
-    <div class="General" id="Humidite"></div>
+    <article><h1>Tableau de relevés</h1>
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="Humidite"></div>
+    </article>
 </div>
-
-
-<div class="row"></div>
+<div class="row fin">
+    <article><h1>Graphique de relevés</h1>
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="graphdiv30"></div>
+    </article>
+</div>
