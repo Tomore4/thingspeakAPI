@@ -1,5 +1,8 @@
 jQuery(document).ready(function ($) {
 
+
+
+
     /* Fonction permettant de modifier
         l'écriture de la date
         qui s'affiche dans le tableau
@@ -165,7 +168,7 @@ jQuery(document).ready(function ($) {
                 labelsDivStyles: {'textAlign': 'right'},
                 labelsDivWidth: 180,
                 labelsSeparateLines: true,
-
+                valueRange: [5, 60],
                 legend: 'always',
                 ylabel: 'Température(°C)',
                 showRoller: false,
@@ -175,7 +178,7 @@ jQuery(document).ready(function ($) {
 
     });
 
-
+/*
     //Cette fonction permet d'afficher les valeurs d'humidite
     // Cela va s'afficher dans Humidite.php dans la div dont l'id est Humidite
     $.ajax({
@@ -221,7 +224,7 @@ jQuery(document).ready(function ($) {
 
         // Construction du graphique :
         // Cela va s'afficher dans Humidite.php dans la div dont l'id est graphdiv30
-            g3 = new Dygraph(document.getElementById("graphdiv30"),
+        g3 = new Dygraph(document.getElementById("graphdiv30"),
             chaine,
             {
                 title: 'Humidité',
@@ -229,7 +232,7 @@ jQuery(document).ready(function ($) {
                 labelsDivStyles: {'textAlign': 'right'},
                 labelsDivWidth: 180,
                 labelsSeparateLines: true,
-
+                valueRange: [5, 90],
                 legend: 'always',
                 ylabel: 'Humidité(%)',
                 showRoller: false,
@@ -238,6 +241,8 @@ jQuery(document).ready(function ($) {
             });
 
     });
+
+*/
 
     /*
 
@@ -262,4 +267,99 @@ jQuery(document).ready(function ($) {
     //});
 
     */
+
+
+
+
+    $("#envoi").click(function() {
+        $('.indication').empty();
+        $('#Humidite').empty();
+        $('#graphdiv30').empty();
+        var url = "";
+        var choix = $('input[type=radio][name=click]:checked').attr('value');
+        var heure1="T00:00:00.000Z";
+        var heure2="T23:59:59.000Z";
+
+        // construction de l'url en fonction du bouton radio sélectionné
+        switch (choix) {
+            case "Date":
+                var date = $('#1date').val();
+                url = "http://164.132.194.235:8080/date/" + date;
+                break;
+            case "Xvaleurs":
+                var nombre = $('#Nvaleurs').val();
+                url = "http://164.132.194.235:8080/valeur/humidite/" + nombre;
+                break;
+            case "Periode":
+                var date1 = $('#date1').val();
+                var date2 = $('#date2').val();
+                url = "http://164.132.194.235:8080/date/" + date1 + heure1 + "/" + date2 + heure2;
+                alert(url);
+                break;
+        }
+        //Cette fonction permet d'afficher les valeurs d'humidite
+        // Cela va s'afficher dans Humidite.php dans la div dont l'id est Humidite
+        $.ajax({
+            url: url,
+            //method: 'GET',
+            crossDomain: true,
+            dataType: 'jsonp'
+        }).done(function(data){
+            console.log(data);
+            console.log(data['results'][0][['humidite']]);
+            //Construction du tableau:
+            $('#Humidite').append("<table class='table table-condensed table-hover table-bordered table-striped'></table>");
+            //L'en tête:
+            ligne = "<thead><tr>";
+            ligne += "<th>Date</th>";
+            ligne += "<th>Humidite</th>";
+            ligne += "</tr></thead>";
+
+            $('#Humidite table').append(ligne);
+            $('#Humidite table').append("<tbody>");
+            // Le corps du tableau:
+            for(var i=0;i<data['results'].length;i++){
+                var date = data['results'][i][['date']];
+                var Hum = data['results'][i][['humidite']];
+                date=lissage(date);
+                ligne = "<tr>";
+                ligne += "<td>"+date+"</td>";
+                ligne += "<td>"+Hum+"</td>";
+                ligne += "</tr>";
+                $('#Humidite table').append(ligne);
+            }
+            $('#Humidite table').append("</tbody>");
+            $('table').tablesorter();
+
+            // construction des données à passer au graphique
+            var chaine = "";
+            for (var i = 0; i < data['results'].length; i++) {
+                var date = data['results'][i][['date']];
+                var hum2= data['results'][i][['humidite']];
+                date=lissage2(date);
+                chaine += date + "," + hum2 + "\n";
+            }
+
+            // Construction du graphique :
+            // Cela va s'afficher dans Humidite.php dans la div dont l'id est graphdiv30
+            g3 = new Dygraph(document.getElementById("graphdiv30"),
+                chaine,
+                {
+                    title: 'Humidité',
+                    labels: ["Date", "Humidité (%)"],
+                    labelsDivStyles: {'textAlign': 'right'},
+                    labelsDivWidth: 180,
+                    labelsSeparateLines: true,
+
+                    legend: 'always',
+                    ylabel: 'Humidité(%)',
+                    showRoller: false,
+                    showRangeSelector: true,
+                    height: 400
+                });
+
+        });
+    });
+
+
 });

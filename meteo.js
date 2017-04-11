@@ -225,38 +225,38 @@ app.get('/valeurs/:nb', function(req, res) {
    );
 });
 
-// app.get('/date/:date', function(req, res) {
-//   var date = req.params.date;
-//   console.log(req.params.date);
-//   var firstResult;
-//   ////requête//////
-//   var selectQuery = "SELECT * FROM post WHERE date = "+date ;
-//   connection.query(
-//     selectQuery,
-//     function select(error, results, fields) {
-//       if (error) {
-//         console.log(error);
-//         connection.end();
-//         return;
-//       }
-//       if ( results.length > 0 )  {
-//         //firstResult = results[ 0 ];
-//          //console.log('humidite: ' + firstResult['humidite']);
-//          //console.log('temperature: ' + firstResult['temperature']);
-//          var temp=[];
-//          var humi=[];
-//          for(var i=0;i<results.length;i++){
-//            temp.push(results[i]['temperature']);
-//            humi.push(results[i]['humidite']);
-//          }
-//          res.jsonp({temperature : temp, humidite : humi});
-//          console.log("succes get");
-//        } else {
-//          console.log("Pas de données");
-//        }
-//      }
-//    );
-// });
+ app.get('/date/:date', function(req, res) {
+   var date = req.params.date;
+   console.log(req.params.date);
+   var firstResult;
+   ////requête//////
+   var selectQuery = "SELECT * FROM post WHERE date = "+date ;
+   connection.query(
+     selectQuery,
+     function select(error, results, fields) {
+       if (error) {
+         console.log(error);
+         connection.end();
+         return;
+       }
+       if ( results.length > 0 )  {
+         //firstResult = results[ 0 ];
+          //console.log('humidite: ' + firstResult['humidite']);
+          //console.log('temperature: ' + firstResult['temperature']);
+          var temp=[];
+          var humi=[];
+          for(var i=0;i<results.length;i++){
+            temp.push(results[i]['temperature']);
+            humi.push(results[i]['humidite']);
+          }
+          res.jsonp({temperature : temp, humidite : humi});
+          console.log("succes get");
+        } else {
+          console.log("Pas de données");
+        }
+      }
+    );
+ });
 
 app.get('/date/:date_debut/:date_fin', function(req, res) {
   var debut = req.params.date_debut;
