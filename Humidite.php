@@ -22,20 +22,20 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary pull-left col-lg-offset-5 col-lg-2 col-md-offset-5 col-md-2 col-sm-offset-5 col-sm-2 col-xs-offset-5 col-xs-2" id="envoi">Envoyer</button>
+                    <button type="button" class="btn btn-primary pull-left col-lg-offset-5 col-lg-2 col-md-offset-5 col-md-2 col-sm-offset-5 col-sm-2 col-xs-offset-5 col-xs-2" id="envoiHum">Envoyer</button>
                 </form>
 
 
 <div class="row indication">
-    <h1 class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">Veuillez remplir un des champs du formulaire ci-dessus</h1>
+    <h1 class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8">Veuillez remplir un des champs du formulaire ci-dessus</h1>
 </div>
-<div class="row">
+<div class="Tableau row">
     <article><h1>Tableau de relevés</h1>
         <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="Humidite2"></div>
     </article>
 </div>
-<div class="row fin">
+<div class="Graphique row fin">
     <article><h1>Graphique de relevés</h1>
-        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="graphdiv40"></div>
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="graphdiv35"></div>
     </article>
 </div>
