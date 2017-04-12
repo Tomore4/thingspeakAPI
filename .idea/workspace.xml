@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="189d0856-1579-48e5-8b41-199b6352aa49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Humidite.php" afterPath="$PROJECT_DIR$/Humidite.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/meteo.js" afterPath="$PROJECT_DIR$/meteo.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Humidite.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Humidite.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Humidite.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="20" column="116" lean-forward="false" selection-start-line="20" selection-start-column="116" selection-end-line="20" selection-end-column="116" />
+            <state relative-caret-position="345">
+              <caret line="29" column="149" lean-forward="false" selection-start-line="29" selection-start-column="149" selection-end-line="29" selection-end-column="149" />
               <folding />
             </state>
           </provider>
@@ -101,10 +99,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="165">
               <caret line="321" column="16" lean-forward="true" selection-start-line="321" selection-start-column="16" selection-end-line="321" selection-end-column="55" />
               <folding />
             </state>
@@ -164,8 +162,8 @@
         <option value="$PROJECT_DIR$/view/styleDTA.css" />
         <option value="$PROJECT_DIR$/thingspeak.php" />
         <option value="$PROJECT_DIR$/view/styleBoot.css" />
-        <option value="$PROJECT_DIR$/Humidite.php" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/Humidite.php" />
       </list>
     </option>
   </component>
@@ -334,15 +332,15 @@
       <workItem from="1491480782008" duration="1937000" />
       <workItem from="1491485657254" duration="19106000" />
       <workItem from="1491808772631" duration="21266000" />
-      <workItem from="1491895445037" duration="18876000" />
+      <workItem from="1491895445037" duration="19301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66873000" />
+    <option name="totallyTimeSpent" value="67298000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1368" height="743" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="743" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1522694" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -641,18 +639,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Humidite.php">
+    <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" column="116" lean-forward="false" selection-start-line="20" selection-start-column="116" selection-end-line="20" selection-end-column="116" />
+        <state relative-caret-position="165">
+          <caret line="321" column="16" lean-forward="true" selection-start-line="321" selection-start-column="16" selection-end-line="321" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/Humidite.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="321" column="16" lean-forward="true" selection-start-line="321" selection-start-column="16" selection-end-line="321" selection-end-column="55" />
+        <state relative-caret-position="345">
+          <caret line="29" column="149" lean-forward="false" selection-start-line="29" selection-start-column="149" selection-end-line="29" selection-end-column="149" />
           <folding />
         </state>
       </provider>

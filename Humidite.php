@@ -27,7 +27,7 @@
 
 
 <div class="row indication">
-    <h1 class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">Veuillez compléter le formulaire ci-dessus</h1>
+    <h1 class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4">Veuillez remplir un des champs du formulaire ci-dessus</h1>
 </div>
 <div class="row">
     <article><h1>Tableau de relevés</h1>
