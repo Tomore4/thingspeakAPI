@@ -178,7 +178,7 @@ jQuery(document).ready(function ($) {
 
     });
 
-/*
+
     //Cette fonction permet d'afficher les valeurs d'humidite
     // Cela va s'afficher dans Humidite.php dans la div dont l'id est Humidite
     $.ajax({
@@ -242,7 +242,7 @@ jQuery(document).ready(function ($) {
 
     });
 
-*/
+
 
     /*
 
@@ -308,15 +308,15 @@ jQuery(document).ready(function ($) {
             console.log(data);
             console.log(data['results'][0][['humidite']]);
             //Construction du tableau:
-            $('#Humidite').append("<table class='table table-condensed table-hover table-bordered table-striped'></table>");
+            $('#Humidite2').append("<table class='table table-condensed table-hover table-bordered table-striped'></table>");
             //L'en tête:
             ligne = "<thead><tr>";
             ligne += "<th>Date</th>";
             ligne += "<th>Humidite</th>";
             ligne += "</tr></thead>";
 
-            $('#Humidite table').append(ligne);
-            $('#Humidite table').append("<tbody>");
+            $('#Humidite2 table').append(ligne);
+            $('#Humidite2 table').append("<tbody>");
             // Le corps du tableau:
             for(var i=0;i<data['results'].length;i++){
                 var date = data['results'][i][['date']];
@@ -326,9 +326,9 @@ jQuery(document).ready(function ($) {
                 ligne += "<td>"+date+"</td>";
                 ligne += "<td>"+Hum+"</td>";
                 ligne += "</tr>";
-                $('#Humidite table').append(ligne);
+                $('#Humidite2 table').append(ligne);
             }
-            $('#Humidite table').append("</tbody>");
+            $('#Humidite2 table').append("</tbody>");
             $('table').tablesorter();
 
             // construction des données à passer au graphique
@@ -342,7 +342,7 @@ jQuery(document).ready(function ($) {
 
             // Construction du graphique :
             // Cela va s'afficher dans Humidite.php dans la div dont l'id est graphdiv30
-            g3 = new Dygraph(document.getElementById("graphdiv30"),
+            g4 = new Dygraph(document.getElementById("graphdiv40"),
                 chaine,
                 {
                     title: 'Humidité',
