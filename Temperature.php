@@ -29,12 +29,12 @@
 <div class="row indication">
     <h1 class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8">Veuillez remplir un des champs du formulaire ci-dessus</h1>
 </div>
-<div class="Tableau row">
+<div class="Tableau row" style="display: none;" id="affiche3">
     <article><h1>Tableau de relevés</h1>
         <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="Temperature2"></div>
     </article>
 </div>
-<div class="Graphique row fin">
+<div class="Graphique row fin" style="display: none;" id="affiche4">
     <article><h1>Graphique de relevés</h1>
         <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8" id="graphdiv25"></div>
     </article>

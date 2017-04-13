@@ -246,9 +246,12 @@ jQuery(document).ready(function ($) {
     //Lorsqu'on rempli le formulaire sur humidite.php et
     // clique sur le bouton envoi
     $("#envoiHum").click(function() {
-        $('.indication').empty();
-        $('#Humidite2').empty();
-        $('#graphdiv35').empty();
+
+        $('#affiche1').show();//On fait apparaître la div dont l'id est affiche1
+        $('#affiche2').show();//On fait apparaître la div dont l'id est affiche2
+        $('.indication').empty();//On vide la div dont la classe est indication: rien ne s'affiche mais cela permet de garder la hauteur de la div
+        $('#Humidite2').empty();//On vide la div dont l'id est Humidite2
+        $('#graphdiv35').empty();//On vide la div dont l'id est graphdiv35
         var url = "";
         var choix = $('input[type=radio][name=click]:checked').attr('value');
         var heure1="T00:00:00.000Z";
@@ -341,9 +344,11 @@ jQuery(document).ready(function ($) {
     //Lorsqu'on rempli le formulaire sur Temperature.php et
     // clique sur le bouton envoi
     $("#envoiTemp").click(function() {
-        $('.indication').empty();
-        $('#Temperature2').empty();
-        $('#graphdiv25').empty();
+        $('#affiche3').show();  //On fait apparaître la div dont l'id est affiche3
+        $('#affiche4').show(); //On fait apparaître la div dont l'id est affiche4
+        $('.indication').empty(); //On vide la div dont la classe est indication: rien ne s'affiche mais cela permet de garder la hauteur de la div
+        $('#Temperature2').empty(); //On vide la div dont l'id est Temperature2
+        $('#graphdiv25').empty();  //On vide la div dont l'id est graphdiv25
         var url = "";
         var choix = $('input[type=radio][name=click]:checked').attr('value');
         var heure1="T00:00:00.000Z";
